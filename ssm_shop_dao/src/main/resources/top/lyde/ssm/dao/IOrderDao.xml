@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.lyde.ssm.dao.IOrderDao">
+
+    <resultMap id="orderProductMap" type="Order">
+        <id property="id" column="id"></id>
+        <result property="orderNum" column="orderNum"></result>
+        <result property="orderTime" column="orderTime"></result>
+        <result property="peopleCount" column="peopleCount"></result>
+        <result property="orderDesc" column="orderDesc"></result>
+        <result property="payType" column="payType"></result>
+        <result property="orderStatus" column="orderStatus"></result>
+        <result property="productId" column="productId"></result>
+        <result property="memberId" column="memberId"></result>
+        <association property="product"  javaType="Product">
+            <id property="id" column="pid"></id>
+            <result property="productNum" column="productNum"></result>
+            <result property="productName" column="productName"></result>
+            <result property="cityName" column="cityName"></result>
+            <result property="departureTime" column="departureTime"></result>
+            <result property="productPrice" column="productPrice"></result>
+            <result property="productDesc" column="productDesc"></result>
+            <result property="productStatus" column="productStatus"></result>
+        </association>
+    </resultMap>
+    <select id="findAll"  resultMap="orderProductMap" resultType="Order" >
+       select o.id,o.orderNum,o.orderTime,o.peopleCount,o.orderDesc,o.payType,o.orderStatus,o.productId,o.memberId,
+              p.id as pid,p.productNum,p.productName,p.cityName,p.departureTime,p.productPrice,p.productDesc,p.productStatus
+       from `order` o  left join product p
+       on o.productId = p.id
+    </select>
+
+
+    <resultMap id="orderProductShowMap" type="Order">
+        <id property="id" column="id"></id>
+        <result property="orderNum" column="orderNum"></result>
+        <result property="orderTime" column="orderTime"></result>
+        <result property="peopleCount" column="peopleCount"></result>
+        <result property="orderDesc" column="orderDesc"></result>
+        <result property="payType" column="payType"></result>
+        <result property="orderStatus" column="orderStatus"></result>
+        <result property="productId" column="productId"></result>
+        <result property="memberId" column="memberId"></result>
+        <association property="product" column="productId"  javaType="Product" select="top.lyde.ssm.dao.IProductDao.findById"></association>
+        <association property="member" column="memberId"  javaType="Member" select="top.lyde.ssm.dao.IMemberDao.findById"></association>
+        <collection property="travellers" column="id"  ofType="Product" select="top.lyde.ssm.dao.ITravellerDao.findByOrderId"></collection>
+    </resultMap>
+    <select id="findById"  resultMap="orderProductShowMap" resultType="Order" >
+       select o.id,o.orderNum,o.orderTime,o.peopleCount,o.orderDesc,o.payType,o.orderStatus,o.productId,o.memberId
+       from `order` o where id = #{id}
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ssm_shop_dao/ssm_shop_dao.iml" filepath="$PROJECT_DIR$/ssm_shop_dao/ssm_shop_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_shop_domain/ssm_shop_domain.iml" filepath="$PROJECT_DIR$/ssm_shop_domain/ssm_shop_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ssm_shop_git.iml" filepath="$PROJECT_DIR$/.idea/ssm_shop_git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_shop_service/ssm_shop_service.iml" filepath="$PROJECT_DIR$/ssm_shop_service/ssm_shop_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_shop_utils/ssm_shop_utils.iml" filepath="$PROJECT_DIR$/ssm_shop_utils/ssm_shop_utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_shop_web/web.iml" filepath="$PROJECT_DIR$/ssm_shop_web/web.iml" />
+    </modules>
+  </component>
+</project>
