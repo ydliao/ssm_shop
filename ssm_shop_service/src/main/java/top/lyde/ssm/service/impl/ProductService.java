@@ -1,5 +1,6 @@
 package top.lyde.ssm.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import top.lyde.ssm.dao.IProductDao;
 import top.lyde.ssm.domain.Product;
 import top.lyde.ssm.service.IProductService;
@@ -13,7 +14,8 @@ import java.util.List;
 public class ProductService implements IProductService {
     @Autowired
     IProductDao productDao;
-    public List<Product> findAll() throws Exception {
+    public List<Product> findAll(Integer page,Integer size ) throws Exception {
+        PageHelper.startPage(page,size);
         return productDao.findAll();
     }
 

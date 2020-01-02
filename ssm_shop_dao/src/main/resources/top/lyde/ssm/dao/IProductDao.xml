@@ -13,4 +13,8 @@
         INSERT INTO `product` (`productNum`, `productName`, `cityName`, `departureTime`, `productPrice`, `productDesc`, `productStatus`)
         VALUES ( #{productNum}, #{productName}, #{cityName}, #{departureTime}, #{productPrice}, #{productDesc}, #{productStatus})
     </insert>
+
+    <select id="findById"  resultType="Product">
+        select `id`, `productNum`, `productName`, `cityName`, `departureTime`, `productPrice`, `productDesc`, `productStatus` from product where id =#{id}
+    </select>
 </mapper>

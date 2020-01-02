@@ -67,4 +67,17 @@ public class Traveller {
     public void setTravellerType(Integer travellerType) {
         this.travellerType = travellerType;
     }
+
+    @Override
+    public String toString() {
+        return "Traveller{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", credentialsType=" + credentialsType +
+                ", credentialsNum='" + credentialsNum + '\'' +
+                ", travellerType=" + travellerType +
+                '}';
+    }
 }

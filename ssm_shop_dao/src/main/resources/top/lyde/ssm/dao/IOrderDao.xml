@@ -44,7 +44,7 @@
         <result property="memberId" column="memberId"></result>
         <association property="product" column="productId"  javaType="Product" select="top.lyde.ssm.dao.IProductDao.findById"></association>
         <association property="member" column="memberId"  javaType="Member" select="top.lyde.ssm.dao.IMemberDao.findById"></association>
-        <collection property="travellers" column="id"  ofType="Product" select="top.lyde.ssm.dao.ITravellerDao.findByOrderId"></collection>
+        <collection property="travellers" column="{orderId=id}"  ofType="Traveller" javaType="java.util.ArrayList" select="top.lyde.ssm.dao.ITravellerDao.findByOrderId"></collection>
     </resultMap>
     <select id="findById"  resultMap="orderProductShowMap" resultType="Order" >
        select o.id,o.orderNum,o.orderTime,o.peopleCount,o.orderDesc,o.payType,o.orderStatus,o.productId,o.memberId

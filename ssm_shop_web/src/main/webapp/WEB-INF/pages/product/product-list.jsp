@@ -43,7 +43,7 @@
                 <td class="text-center sorting_asc_disabled sorting_desc_disabled">操作</td>
             </tr>
             </thead>
-            <c:forEach items="${productList}" var="product">
+            <c:forEach items="${productPageInfo.list}" var="product">
                 <tr>
                     <td><input name="ids" type="checkbox"></td>
                     <td>${product.id}</td>
@@ -57,11 +57,46 @@
                     <td class="text-center">
                         <button type="button" class="btn bg-olive btn-xs">订单</button>
                         <button type="button" class="btn bg-olive btn-xs">详情</button>
-                        <button type="button" class="btn bg-olive btn-xs">详情</button>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+
+        <div class="fa-pull-left">
+            <div class="form-group form-inline">
+                总共${productPageInfo.pages}页 共 ${productPageInfo.total} 条数据,每页 ${ productPageInfo.pageSize}
+                <select id="pageSize" class="form-control" >
+                    <option  ${ productPageInfo.pageSize==5?"selected":""}>5</option>
+                    <option  ${ productPageInfo.pageSize==10?"selected":""}>10</option>
+                    <option  ${ productPageInfo.pageSize==20?"selected":""}>20</option>
+                    <option  ${ productPageInfo.pageSize==50?"selected":""}>50</option>
+                    <option  ${ productPageInfo.pageSize==100?"selected":""}>100</option>
+                </select>
+                条
+            </div>
+        </div>
+
+        <div class="dataTables_paginate paging_simple_numbers">
+            <ul class="pagination">
+                <li class="paginate_button page-item previous disabled">
+                    <a class="page-link" href="./findAll?page=1&size=${productPageInfo.pageSize}">首页</a>
+                </li>
+                <li class="paginate_button previous">
+                    <a class="page-link" href="./findAll?page=${productPageInfo.pageNum-1}&size=${productPageInfo.pageSize}">上一页</a>
+                </li>
+                <c:forEach begin="1" end="${productPageInfo.pages}" var="pageNum">
+                    <li class="paginate_button previous">
+                        <a class="page-link" href="./findAll?page=${pageNum}&size=${productPageInfo.pageSize}">${pageNum}</a>
+                    </li>
+                </c:forEach>
+                <li>
+                    <a class="page-link" href="./findAll?page=${productPageInfo.pageNum+1}&size=${productPageInfo.pageSize}">下一页</a>
+                </li>
+                <li>
+                    <a class="page-link" href="./findAll?page=${productPageInfo.pages}&size=${productPageInfo.pageSize}">尾页</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <jsp:include page="../layout/footer.jsp"></jsp:include>
 </div>
@@ -71,12 +106,17 @@
     $(function () {
 
         $('#example1').DataTable({
-            "paging": true,
+            "paging": false,
             "lengthChange": false,
             "searching": true,
             "ordering": true,
-            "info": true,
+            "info": false,
             "autoWidth": true,
+        });
+
+        $('#pageSize').change(function () {
+            let pageSize = $("#pageSize").val();
+            location.href = "./findAll?page=1&size=" + pageSize;
         });
     });
 </script>

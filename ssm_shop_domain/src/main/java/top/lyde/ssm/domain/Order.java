@@ -31,7 +31,7 @@ public class Order {
     }
 
     public void setTravellers(List<Traveller> travellers) {
-        travellers = travellers;
+        this.travellers = travellers;
     }
 
     public Integer getId() {
@@ -125,7 +125,10 @@ public class Order {
                 ", payType=" + payType +
                 ", orderStatus=" + orderStatus +
                 ", productId=" + productId +
+                ", product=" + product +
                 ", memberId=" + memberId +
+                ", member=" + member +
+                ", travellers=" + travellers +
                 '}';
     }
 }

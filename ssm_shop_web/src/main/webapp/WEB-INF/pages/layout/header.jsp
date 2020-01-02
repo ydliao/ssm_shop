@@ -174,13 +174,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="${pageContext.request.contextPath}/Product/findAll" class="nav-link">
+                                <a href="${pageContext.request.contextPath}/Product/findAll?page=1&&size=10" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>产品管理</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="${pageContext.request.contextPath}/Order/findAll?page=1&&size=10" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>订单管理</p>
                                 </a>
@@ -198,7 +198,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="${pageContext.request.contextPath}/User/findAll?page=1&&size=10" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>用户管理</p>
                                 </a>

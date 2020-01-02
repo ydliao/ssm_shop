@@ -1,5 +1,7 @@
 package top.lyde.ssm.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +19,15 @@ public class OrderController {
     private IOrderService orderService;
 
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name = "page",required = true) Integer page,
-                                @RequestParam(name = "size",required = true) Integer size)
+    public ModelAndView findAll(@RequestParam(name = "page",defaultValue = "1") Integer page,
+                                @RequestParam(name = "size",defaultValue = "10") Integer size)
             throws Exception {
         ModelAndView mv=new ModelAndView();
         List<Order> orderList = orderService.findAll(page,size);
-        mv.addObject("orderList",orderList);
+        PageInfo ordersPageInfo = new PageInfo(orderList);
+        ordersPageInfo.setList(orderList);
+        System.out.println(ordersPageInfo);
+        mv.addObject("orders",ordersPageInfo);
         mv.setViewName("order/order-list");
         return mv;
     }
@@ -32,6 +37,7 @@ public class OrderController {
         ModelAndView mv=new ModelAndView();
         Order order = orderService.findById(id);
         mv.addObject("order",order);
+        System.out.println(order);
         mv.setViewName("order/order-show");
         return mv;
     }
