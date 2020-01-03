@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.lyde.ssm.dao.IRoleDao">
+    <select id="findAll"  resultType="Role">
+        select `id`, `roleName`, `roleDesc` from role
+    </select>
+    <insert id="save" parameterType="Role" >
+        <!-- 配置插入操作后，获取插入数据的id 并更新i值-->
+        <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+        INSERT INTO `role` (`roleName`, `roleDesc`) VALUES ( #{roleName}, #{roleDesc})
+    </insert>
+    <select id="findById"  resultType="Role">
+        select `id`, `roleName`, `roleDesc` from role where id =#{id}
+    </select>
+   <resultMap id="userRoleInfo" type="Role" >
+       <id property="id" column="id"></id>
+       <result property="roleName" column="roleName"></result>
+       <result property="roleDesc" column="roleDesc"></result>
+       <collection property="permissions" column="id" ofType="Permissions" javaType="java.util.ArrayList" select="top.lyde.ssm.dao.IPermissionsDao.findByRoleId"></collection>
+   </resultMap>
+    <select id="findByUserId" resultType="Role" resultMap="userRoleInfo">
+           select r.id, r.roleName, r.roleDesc from role r join userrole ur on ur.roleid=r.id where ur.userid =#{id}
+    </select>
+</mapper>

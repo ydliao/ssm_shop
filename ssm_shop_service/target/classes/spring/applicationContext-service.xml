@@ -25,8 +25,13 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
+
     <!--配置加密类-->
     <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
+
+
     <!--配置事务的通知-->
     <tx:advice id="advice">
         <tx:attributes>

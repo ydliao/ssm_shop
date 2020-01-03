@@ -10,10 +10,18 @@
         <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
             select last_insert_id();
         </selectKey>
-        INSERT INTO `user` (`email`, `username`, `password`, `honeNum`, `status`)
-             VALUES (#{email}, #{username}, #{password}, #{honeNum}, #{status});
+        INSERT INTO `user` (`email`, `username`, `password`, `phoneNum`, `status`)
+             VALUES (#{email}, #{username}, #{password}, #{phoneNum}, #{status});
     </insert>
-    <select id="findById"  resultType="User">
-        select `id`,`email`, `username`, `password`, `honeNum`, `status` from `user` where id =#{id}
+    <resultMap id="userRoleShowMap" type="User">
+        <id property="id" column="id"></id>
+        <result property="email" column="email"></result>
+        <result property="password" column="password"></result>
+        <result property="phoneNum" column="phoneNum"></result>
+        <result property="status" column="status"></result>
+        <collection property="roles" column="id"  ofType="Role" javaType="java.util.ArrayList" select="top.lyde.ssm.dao.IRoleDao.findByUserId"></collection>
+    </resultMap>
+    <select id="findById"  resultType="User" resultMap="userRoleShowMap">
+        select `id`,`email`, `username`, `password`, `phoneNum`, `status` from `user` where id =#{id}
     </select>
 </mapper>

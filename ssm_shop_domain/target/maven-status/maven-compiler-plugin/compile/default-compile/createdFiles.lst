@@ -1,5 +1,7 @@
 top\lyde\ssm\domain\Product.class
-top\lyde\ssm\domain\Member.class
 top\lyde\ssm\domain\Order.class
+top\lyde\ssm\domain\Role.class
+top\lyde\ssm\domain\Member.class
 top\lyde\ssm\domain\Traveller.class
 top\lyde\ssm\domain\User.class
+top\lyde\ssm\domain\Permissions.class

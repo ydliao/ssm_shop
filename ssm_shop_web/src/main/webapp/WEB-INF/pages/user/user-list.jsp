@@ -52,7 +52,7 @@
                     <td>${user.status}</td>
                     <td class="text-center">
                         <button type="button" class="btn bg-olive btn-xs">订单</button>
-                        <button type="button" class="btn bg-olive btn-xs">详情</button>
+                        <button type="button" class="btn bg-olive btn-xs" onclick="location.href='./findById?id=${user.id}'">详情</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -66,12 +66,12 @@
     $(function () {
 
         $('#example1').DataTable({
-            "paging": true,
-            "lengthChange": false,
+            "paging": false,
+            "lengthChange": true,
             "searching": true,
             "ordering": true,
-            "info": true,
-            "autoWidth": true,
+            "info": false,
+            "autoWidth": false,
         });
         $('#pageSize').change(function () {
             let pageSize = $("#pageSize").val();

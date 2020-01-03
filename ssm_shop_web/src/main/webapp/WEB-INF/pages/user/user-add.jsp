@@ -16,7 +16,7 @@
     <div class="content-wrapper">
         <section class="content-header">
             <div class="col-sm-6">
-                <h1>产品管理<small>产品表单</small></h1>
+                <h1>用户管理<small>用户表单</small></h1>
             </div>
         </section>
 
@@ -24,61 +24,35 @@
             <section class="content">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Different Width</h3>
+                        <h3 class="card-title">用户信息</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-2 title">产品编号</div>
+                            <div class="col-2 title">用户名</div>
                             <div class="col-4 data">
-                                <input type="text" class="form-control" placeholder="产品编号" name="productNum">
+                                <input type="text" class="form-control" placeholder="用户名" name="username">
                             </div>
 
-                            <div class="col-2 title">产品名称</div>
+                            <div class="col-2 title">密码</div>
                             <div class="col-4 data">
-                                <input type="text" class="form-control" placeholder="产品名称" name="productName">
+                                <input type="password" class="form-control" placeholder="密码" name="password">
+                            </div>
+                            <div class="col-2 title">邮箱</div>
+                            <div class="col-4 data">
+                                <input type="text" class="form-control" placeholder="邮箱" name="email">
+                            </div>
+                            <div class="col-2 title">电话</div>
+                            <div class="col-4 data">
+                                <input type="text" class="form-control" placeholder="电话" name="phoneNum">
                             </div>
 
-                            <div class="col-2 title">出发时间</div>
+                            <div class="col-2 title">用户状态</div>
                             <div class="col-4 data">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="departureTime" name="departureTime" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
-                                </div>
-
-
-<%--                                <div class="input-group date">--%>
-<%--                                    <div class="input-group-append">--%>
-<%--                                        <i class="fa fa-calculator"></i>--%>
-<%--                                    </div>--%>
-<%--                                    <input type="text" class="form-control fa-pull-right" placeholder="出发时间"--%>
-<%--                                           name="departureTime" id="datepicker-a3">--%>
-<%--                                </div>--%>
-                            </div>
-
-
-                            <div class="col-2 title">出发城市</div>
-                            <div class="col-4 data">
-                                <input type="text" class="form-control" placeholder="出发城市" name="cityName">
-                            </div>
-
-                            <div class="col-2 title">产品价格</div>
-                            <div class="col-4 data">
-                                <input type="text" class="form-control" placeholder="产品价格" name="productPrice">
-                            </div>
-
-                            <div class="col-2 title">产品状态</div>
-                            <div class="col-4 data">
-                                <select class="form-control select2" name="productStatus">
+                                <select class="form-control select2" name="status">
                                     <option value="0" selected="selected">关闭</option>
                                     <option value="1">开启</option>
 
                                 </select>
-                            </div>
-                            <div class="col-2 title ">其他信息</div>
-                            <div class="col-4 data ">
-                                <textarea class="form-control" rows="3" name="productDesc" placeholder="其他信息"></textarea>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
-top\lyde\ssm\dao\IUserDao.class
 top\lyde\ssm\dao\IProductDao.class
-top\lyde\ssm\dao\IOrderDao.class
+top\lyde\ssm\dao\IPermissionsDao.class
 top\lyde\ssm\dao\IMemberDao.class
+top\lyde\ssm\dao\IUserDao.class
+top\lyde\ssm\dao\IRoleDao.class
+top\lyde\ssm\dao\IOrderDao.class
 top\lyde\ssm\dao\ITravellerDao.class

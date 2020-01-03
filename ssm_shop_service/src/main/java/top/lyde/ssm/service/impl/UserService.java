@@ -5,11 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import top.lyde.ssm.dao.IOrderDao;
+
+import top.lyde.ssm.dao.IPermissionsDao;
 import top.lyde.ssm.dao.IUserDao;
-import top.lyde.ssm.domain.Order;
 import top.lyde.ssm.domain.User;
-import top.lyde.ssm.service.IOrderService;
 import top.lyde.ssm.service.IUserService;
 
 import java.util.List;
@@ -19,6 +18,8 @@ import java.util.List;
 public class UserService implements IUserService {
     @Autowired
     IUserDao userDao ;
+    @Autowired
+    IPermissionsDao permissionsDao;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
